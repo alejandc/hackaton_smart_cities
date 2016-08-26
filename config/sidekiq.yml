@@ -1,0 +1,11 @@
+:verbose: false
+:concurrency:  <%= ENV['WORKERS_CONCURRENCY'] || 25 %>
+:strict: false
+:queues:
+  - [default,            1]
+
+development:
+  :verbose: true
+
+production:
+  :concurrency: <%= ENV['WORKERS_CONCURRENCY'] || 5 %>

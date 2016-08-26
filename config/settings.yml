@@ -1,0 +1,21 @@
+default: &default
+  :sidekiq_web:
+    :user: 'admin'
+    :passwd: 'admin'
+
+  :redis:
+    :url: 'redis://localhost:6379/0'
+    :namespace: 'hackaton'
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+staging:
+  <<: *default
+
+
+production:
+  <<: *default
