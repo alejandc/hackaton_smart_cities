@@ -10,12 +10,9 @@ default: &default
 development:
   <<: *default
 
-test:
-  <<: *default
-
-staging:
-  <<: *default
-
-
 production:
   <<: *default
+
+  :redis:
+    :url: <%= ENV['REDIS_URL'] %>
+    :namespace: 'hackaton'
