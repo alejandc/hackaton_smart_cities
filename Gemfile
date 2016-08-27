@@ -22,6 +22,10 @@ gem 'sidekiq'
 gem 'redis-namespace'
 gem 'sinatra', github: 'sinatra'
 
+gem 'devise'
+gem 'cancancan'
+gem 'rolify'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry'
