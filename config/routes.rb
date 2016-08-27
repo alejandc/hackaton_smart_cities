@@ -5,5 +5,7 @@ Rails.application.routes.draw do
 
   root 'dashboard#index'
 
+  get '/m', to: 'mobile#index'
+
   mount Sidekiq::Web => '/sidekiq'
 end
