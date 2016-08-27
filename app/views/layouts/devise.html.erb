@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HackatonSmartCities</title>
+
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300,500' rel='stylesheet' type='text/css'>
+
+  </head>
+
+  <body>
+
+    <!-- MAIN CONTENT
+    ================================================== -->
+    <div class="container">
+      <%= render 'layouts/shared/flash_messages'%>
+
+      <%= yield %>
+    </div>
+
+  </body>
+</html>
