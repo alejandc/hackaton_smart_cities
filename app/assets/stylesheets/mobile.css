@@ -1,0 +1,18 @@
+body {
+	background-color: #ffb600;
+}
+div.signin-logos {
+	margin-top: 70px;
+}
+h1.signin-header {
+	font-family: RAYJOHNS;
+	color: white;
+	font-weight: bolder;
+	font-size: 40pt;
+	margin-bottom: 20px;
+}
+
+@font-face {
+  font-family: 'RAYJOHNS';
+  src: url('fonts/RAYJOHNS.ttf')  format('truetype');
+}
