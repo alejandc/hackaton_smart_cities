@@ -30,6 +30,12 @@ Rails.application.configure do
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
 
+  # Add the fonts path
+  #config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+
+  # Precompile additional assets
+  #config.assets.precompile += %w( .svg .eot .woff .ttf )
+
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
@@ -56,6 +62,8 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "hackaton_smart_cities_#{Rails.env}"
   config.action_mailer.perform_caching = false
+
+  config.action_mailer.default_url_options = { host: 'hackaton-smart-cities.herokuapp.com' }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
