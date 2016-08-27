@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   scope '/m' do
 	  root to: 'mobile#index'
+    get 'carga_trayecto', to: 'mobile#carga_trayecto'
   end
 
   mount Sidekiq::Web => '/sidekiq'
