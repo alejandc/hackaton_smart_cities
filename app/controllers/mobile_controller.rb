@@ -5,4 +5,14 @@ class MobileController < ActionController::Base
 	def index
 	end
 
+	def signin
+		if request.post?
+			@user = User.find_by_email(params["email"])
+			if @user.valid_password?(params["password"])
+				session["user_id"] = @user.id
+				redirect_to carga_trayecto_path
+			end
+		end
+	end
+
 end
