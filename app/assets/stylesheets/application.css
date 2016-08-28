@@ -13,6 +13,7 @@
  *= require jquery-ui
  *= require font-awesome
  *= require bootstrap-datetimepicker
+ *= require bootstrap/glyphicons
  *= require_tree .
  *= require_self
  */
