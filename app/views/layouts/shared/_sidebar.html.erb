@@ -24,61 +24,35 @@
   <!-- Sidebar nav -->
   <nav>
     <ul class="sidebar__nav">
-      <li class="sidebar-nav__heading">Dashboard</li>
-      <li>
-        <a href="index.html"><i class="fa fa-th-large"></i> Dashboard</a>
+      <li class="sidebar-nav__heading">Secciones</li>
+      <li id='dashboard_lnk'>
+        <%= link_to "<i class='fa fa-th-large'></i>".html_safe + " Dashboard", root_path %>
+      </li>
+      <li id='suggestions_lnk'>
+        <%= link_to "<i class='fa fa-commenting'></i>".html_safe + " Sugerencias", suggestions_path %>
       </li>
       <li>
         <%= link_to incidents_path do %>
-          <i class="fa fa-th-large"></i>
-          Incidentes
+          <i class="fa fa-exclamation-circle"></i>
+          Incidencias
         <% end %>
       </li>
-      <li class="sidebar-nav__heading">Pages</li>
-      <li class="sidebar-nav__dropdown">
-        <a href="index.html#"><i class="fa fa-user"></i> Account <i class="fa fa-angle-down"></i></a>
-        <ul class="sidebar-nav__submenu">
-          <li><a href="http://simpleqode.com/preview/kite/profile.html">Profile</a></li>
-          <li><a href="http://simpleqode.com/preview/kite/edit-profile.html">Edit profile</a></li>
-          <li><a href="http://simpleqode.com/preview/kite/inbox.html">Inbox</a></li>
-          <li><a href="http://simpleqode.com/preview/kite/sign-in.html">Sign In</a></li>
-          <li><a href="http://simpleqode.com/preview/kite/sign-up.html">Sign Up</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="http://simpleqode.com/preview/kite/orders.html"><i class="fa fa-shopping-cart"></i> Orders</a>
-      </li>
-      <li>
-        <a href="http://simpleqode.com/preview/kite/faq.html"><i class="fa fa-support"></i> FAQ</a>
-      </li>
-      <li>
-        <a href="http://simpleqode.com/preview/kite/contact.html"><i class="fa fa-envelope-o"></i> Contact</a>
-      </li>
-      <li class="sidebar-nav__heading">UI Elements</li>
-      <li>
-        <a href="http://simpleqode.com/preview/kite/ui_tables.html"><i class="fa fa-table"></i> Tables</a>
-      </li>
-      <li>
-        <a href="http://simpleqode.com/preview/kite/ui_forms.html"><i class="fa fa-check-square-o"></i> Forms</a>
-      </li>
-      <li>
-        <a href="http://simpleqode.com/preview/kite/ui_charts.html"><i class="fa fa-bar-chart-o"></i> Charts</a>
-      </li>
-      <li class="sidebar-nav__dropdown">
-        <a href="index.html#"><i class="fa fa-gift"></i> Other <i class="fa fa-angle-down"></i></a>
-        <ul class="sidebar-nav__submenu">
-          <li><a href="http://simpleqode.com/preview/kite/ui_alerts.html">Alerts</a></li>
-          <li><a href="http://simpleqode.com/preview/kite/ui_buttons.html">Buttons</a></li>
-          <li><a href="http://simpleqode.com/preview/kite/ui_pagination.html">Pagination</a></li>
-          <li><a href="http://simpleqode.com/preview/kite/ui_panels.html">Panels</a></li>
-          <li><a href="http://simpleqode.com/preview/kite/ui_progress-bars.html">Progress Bars</a></li>
-          <li><a href="http://simpleqode.com/preview/kite/ui_tabs.html">Tabs</a></li>
-          <li><a href="http://simpleqode.com/preview/kite/ui_typography.html">Typography</a></li>
-        </ul>
-      </li>
-=======
->>>>>>> 17ed112803e154083396973151793248b1680706
     </ul>
   </nav>
 
 </div>
+
+<script type="text/javascript" language="javascript" charset="utf-8">
+  $(function(){
+    <% case controller_name %>
+      <% when "dashboard" %>
+        $('li#dashboard_lnk').addClass('active');
+
+      <% when "suggestions" %>
+        $('li#suggestions_lnk').addClass('active');
+
+      <% else %>
+        <%= nil %>
+    <% end %>
+  })
+</script>

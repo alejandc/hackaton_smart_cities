@@ -9,10 +9,3 @@ initAutocomplete = function() {
     $("#incident_lng").val(place.geometry.location.lng())
   });
 };
-
-$(document).ready(function() {
-  initAutocomplete();
-  $('.datetimepicker').datetimepicker({
-    format: 'YYYY-MM-DD HH:mm'
-  });
-})

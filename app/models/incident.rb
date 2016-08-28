@@ -1,17 +1,17 @@
 # == Schema Information
 #
-# Table name: roles
+# Table name: incidents
 #
-#  id               :integer          not null, primary key
-#  incident_type    :string
-#  start_time       :datetime
-#  end_time         :datetime
-#  lat              :decimal
-#  lng              :decimal
-#  description      :string
-#  available        :boolean
-#  created_at       :datetime
-#  updated_at       :datetime
+#  id            :integer          not null, primary key
+#  incident_type :string
+#  start_time    :datetime
+#  end_time      :datetime
+#  lat           :decimal(, )
+#  lng           :decimal(, )
+#  description   :string
+#  available     :boolean          default(FALSE)
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
 #
 
 class Incident < ActiveRecord::Base
