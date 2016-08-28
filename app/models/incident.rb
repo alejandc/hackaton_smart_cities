@@ -17,5 +17,6 @@
 class Incident < ActiveRecord::Base
   TIPOS = { ACCIDENTE: 'ACCIDENTE', MANIFESTACION: 'MANIFESTACION', EMBOTELLAMIENTO: 'EMBOTELLAMIENTO', INUNDACION: 'INUNDACION' }
 
-  validates :incident_type, :start_time, :end_time, :lat, :lng, :description, :available, presence: true
+  validates :incident_type, :start_time, :end_time, :lat, :lng, presence: true
+  validates_inclusion_of :available, :in => [true, false]
 end

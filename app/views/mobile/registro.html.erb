@@ -1,0 +1,29 @@
+
+<div class="row text-center">
+	<h1 class="signin-header">&iexcl;Glico!</h1>
+</div>
+<div class="row">
+	<div class="col-xs-offset-1 col-xs-10">
+
+		<%= form_tag("/m/registration", method: "post") do %>
+
+      <div class="form-group">
+        <input type="text" class="form-control input-lg" name="Nombre" placeholder="Nombre"/>
+      </div>
+			<div class="form-group">
+				<input type="text" class="form-control input-lg" name="Email" placeholder="Email"/>
+			</div>
+			<div class="form-group">
+				<input type="password" class="form-control input-lg" name="password" placeholder="Contraseña"/>
+			</div>
+
+      <div class="form-group">
+        <input type="number" class="form-control input-lg" name="number" placeholder="Número SUBE"/>
+      </div
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary btn-lg">Registrar</button>
+			</div>
+		<% end %>
+
+	</div>
+</div>

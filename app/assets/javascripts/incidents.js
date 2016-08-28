@@ -12,4 +12,7 @@ initAutocomplete = function() {
 
 $(document).ready(function() {
   initAutocomplete();
+  $('.datetimepicker').datetimepicker({
+    format: 'YYYY-MM-DD HH:mm'
+  });
 })

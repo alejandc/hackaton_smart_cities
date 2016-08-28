@@ -12,18 +12,19 @@
 
       <div class="form-group">
         <%= f.label "Inicio" %>
-        <%= f.datetime_select :start_time, {}, {class: "form-control"} %>
+        <input type="text" name="incident[start_time]" class="form-control datetimepicker" />
       </div>
 
       <div class="form-group">
         <%= f.label "Fin" %>
-        <%= f.datetime_select :end_time, {}, {class: "form-control"} %>
+        <input type="text" name="incident[end_time]" class="form-control datetimepicker" />
       </div>
 
       <div class="form-group">
         <%= f.hidden_field :lat %>
         <%= f.hidden_field :lng %>
-        <%= text_field_tag "location_name", "", placeholder: "Direccion", class: "form-control", id: "location-input", name: "location[name]" %>
+        <%= f.label "Direccion" %>
+        <%= text_field_tag "location_name", "", class: "form-control", id: "location-input", name: "location[name]" %>
       </div>
 
       <div class="form-group">
