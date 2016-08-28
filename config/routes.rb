@@ -8,7 +8,14 @@ Rails.application.routes.draw do
   root 'dashboard#index'
 
   resources :incidents
-  get '/m', to: 'mobile#index'
+  scope '/m' do
+	  root to: 'mobile#index'
+	  get 'signin', to: 'mobile#signin'
+	  post 'signin', to: 'mobile#signin'
+    get 'carga_trayecto', to: 'mobile#carga_trayecto'
+	 get 'ver_incidentes', to: 'mobile#ver_incidentes'
+	 get 'perfil', to: 'mobile#perfil'
+  end
 
   mount Sidekiq::Web => '/sidekiq'
 end
