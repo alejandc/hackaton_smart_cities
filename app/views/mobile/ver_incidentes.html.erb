@@ -69,7 +69,7 @@
 		function addGem(position) {
 			gems.push(new google.maps.Marker({
 										position: new google.maps.LatLng(parseFloat(position.lat), parseFloat(position.lng)),
-										icon: icons['gem'].icon,
+										icon: icons[['esmeralda', 'lapizlasuli', 'ruby'][Math.floor(Math.random() * 3)]].icon,
 										map: map
 									}));
 		}
@@ -111,10 +111,11 @@
 	    	addRoute(map, this.origin, this.destination, this.waypoints, this.travelMode, directionsService);
 			});
 
-			$.each(paths, function() {
-				addGem(this);
-			});
 		}
+
+		$.each(paths, function() {
+			addGem(this);
+		});
 
 	}
 

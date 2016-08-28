@@ -13,8 +13,14 @@ var icons = {
   gold: {
     icon: iconBase + 'caldero_64x64.png'
   },
-  gem: {
+  esmeralda: {
     icon: iconBase + 'esmeralda_32x32.png'
+  },
+  lapizlasuli: {
+    icon: iconBase + 'lapizlasuli_32x32.png'
+  },
+  ruby: {
+    icon: iconBase + 'ruby_32x32.png'
   }
 };
 
