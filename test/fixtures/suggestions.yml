@@ -6,7 +6,7 @@
 #  suggestion_type :string
 #  reference       :string
 #  is_valid        :boolean
-#  start_start     :datetime
+#  start_time      :datetime
 #  end_time        :datetime
 #  points          :integer
 #  created_at      :datetime         not null
