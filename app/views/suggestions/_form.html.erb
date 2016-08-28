@@ -1,0 +1,84 @@
+<div class="form-group">
+  <label for="inputSuggestionType" class="col-sm-2 control-label">Transporte Sugerido</label>
+  <div class="col-sm-2">
+    <%= f.select :suggestion_type, options_for_select(Suggestion::TYPES.keys, f.object.suggestion_type), {},
+                                   class: 'form-control', id: 'inputSuggestionType', onchange: 'show_hide_suggestion_reference();'%>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="inputReference" class="col-sm-2 control-label">Linea</label>
+  <div class="col-sm-4">
+    <%= f.select :suggestion_type, options_for_select(Suggestion::TYPES['Colectivo'], f.object.reference), {}, class: 'form-control', id: 'inputReferenceColectivo'%>
+    <%= f.select :suggestion_type, options_for_select(Suggestion::TYPES['Tren'], f.object.reference), {}, class: 'form-control hidden', id: 'inputReferenceTren', disabled: true%>
+    <%= f.select :suggestion_type, options_for_select(Suggestion::TYPES['Subte'], f.object.reference), {}, class: 'form-control hidden', id: 'inputReferenceSubte', disabled: true%>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="inputSuggestionType" class="col-sm-2 control-label">Sugerencia Recomendada</label>
+  <div class="col-sm-2">
+    <%= f.select :is_valid, options_for_select([["SI", true], ["NO", false]], f.object.is_valid), {},
+                                   class: 'form-control', id: 'inputSuggestionType', onchange: 'show_hide_suggestion_reference();'%>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label "Inicio", class: "col-sm-2 control-label" %>
+  <div class="col-sm-3">
+    <input type="text" name="suggestion[start_time]" class="form-control datetimepicker" />
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label "Fin", class: "col-sm-2 control-label" %>
+  <div class="col-sm-3">
+    <input type="text" name="suggestion[end_time]" class="form-control datetimepicker" />
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="inputSuggestionType" class="col-sm-2 control-label">Puntos Sugeridos</label>
+  <div class="col-sm-2">
+    <%= f.text_field :points, class: 'form-control'%>
+  </div>
+  <p class="help-block">Los puntos indicados pueden sumar o restar en base si es una Sugerencia reomendada o no. </p>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.datetimepicker').datetimepicker({
+      format: 'YYYY-MM-DD HH:mm'
+    });
+  })
+
+  function show_hide_suggestion_reference() {
+    var optionSelected = $( "#inputSuggestionType" ).val();
+
+    if (optionSelected == 'Colectivo') {
+      $('#inputReferenceColectivo').removeClass('hidden');
+      $('#inputReferenceTren').addClass('hidden');
+      $('#inputReferenceSubte').addClass('hidden');
+
+      $('#inputReferenceColectivo').removeAttr('disabled');
+      $('#inputReferenceTren').attr('disabled','disabled');
+      $('#inputReferenceSubte').attr('disabled','disabled');
+    } else if (optionSelected == 'Tren') {
+      $('#inputReferenceColectivo').addClass('hidden');
+      $('#inputReferenceTren').removeClass('hidden');
+      $('#inputReferenceSubte').addClass('hidden');
+
+      $('#inputReferenceColectivo').attr('disabled','disabled');
+      $('#inputReferenceTren').removeAttr('disabled');
+      $('#inputReferenceSubte').attr('disabled','disabled');
+    } else {
+      $('#inputReferenceColectivo').addClass('hidden');
+      $('#inputReferenceTren').addClass('hidden');
+      $('#inputReferenceSubte').removeClass('hidden');
+
+      $('#inputReferenceColectivo').attr('disabled','disabled');
+      $('#inputReferenceTren').attr('disabled','disabled');
+      $('#inputReferenceSubte').removeAttr('disabled');
+    }
+  }
+</script>

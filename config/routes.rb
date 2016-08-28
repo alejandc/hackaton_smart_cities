@@ -3,6 +3,8 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registration"}
 
+  resources :suggestions
+  
   get 'example', to: :index, controller: 'example'
 
   root 'dashboard#index'
