@@ -1,14 +1,19 @@
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href="/m/carga_trayecto">NUEVO VIAJE</a></li>
+  <li role="presentation"><a href="/m/carga_qr">CARGAR QR</a></li>
+</ul>
+
 <h2>DENUNCIAR INCIDENTE</h2>
 
 <%= form_tag("/m/denuncia", method: "post", id: "formDenuncia") do %>
 	<div class="control-group">
-		<textarea class="form-control" name="descripcion" placeholder="Descripción" rows="10"></textarea>
+		<textarea class="form-control" name="descripcion" placeholder="DESCRIPCIÓN" rows="10"></textarea>
 		<input type="hidden" name="lat" id="lat"/>
 		<input type="hidden" name="lng" id="lng"/>
 	</div>
 	<div class="control-group">
 		<br/>
-		<button type="button" class="btn btn-info btn-xl" onClick="enviar()">
+		<button type="button" class="btn btn-info btn-lg" onClick="enviar()">
 			<i class="fa fa-paper-plane"></i> ENVIAR
 		</button>
 	</div>

@@ -1,6 +1,22 @@
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href="/m/carga_trayecto">NUEVO VIAJE</a></li>
+  <li role="presentation"><a href="/m/denuncia">DENUNCIA</a></li>
+  <li role="presentation"><a href="/m/carga_qr">CARGAR QR</a></li>
+</ul>
+
 <div id="mobileMap"></div>
 <br>
-<h1 class="pull-left">Puntos: <span class="puntos">0</span></h1>
+<div class="row puntos">
+	<div class="col-xs-6">
+		PUNTOS
+	</div>
+	<div class="col-xs-3 text-right">
+		<span class="puntos text-info">0</span>
+	</div>
+	<div class="col-xs-3	text-right">
+		<span class="objetivo text-danger">500</span>
+	</div>
+</div>
 
 <script>
 	var travel_option = "<%= @travel_option %>";
@@ -31,7 +47,7 @@
 		return 	[
 							{ origin: new google.maps.LatLng(-34.6031891, -58.37065259999997), destination: new google.maps.LatLng(-34.60452719999999, -58.39527880000003), waypoints: [], travelMode: google.maps.DirectionsTravelMode.WALKING },
 							{ origin: new google.maps.LatLng(-34.6031891, -58.37065259999997), destination: new google.maps.LatLng(-34.60452719999999, -58.39527880000003), waypoints: [], travelMode: google.maps.DirectionsTravelMode.DRIVING },
-							{ origin: new google.maps.LatLng(-34.6031891, -58.37065259999997), destination: new google.maps.LatLng(-34.60452719999999, -58.39527880000003), waypoints: [ {location:new google.maps.LatLng(-34.6074031, -58.38113169999997), stopover: false} ], travelMode: google.maps.DirectionsTravelMode.DRIVING } 
+							{ origin: new google.maps.LatLng(-34.6031891, -58.37065259999997), destination: new google.maps.LatLng(-34.60452719999999, -58.39527880000003), waypoints: [ {location:new google.maps.LatLng(-34.6074031, -58.38113169999997), stopover: false} ], travelMode: google.maps.DirectionsTravelMode.DRIVING }
 					 	]
 	}
 
@@ -44,12 +60,12 @@
     directionsDisplay.setMap(mapAux);
 
     var request = {
-      origin: origin, 
+      origin: origin,
       destination: destination,
       travelMode: travelMode,
       waypoints: waypts
     };
-    
+
     service.route(request, function(response, status) {
       if (status == google.maps.DirectionsStatus.OK) {
         directionsDisplay.setDirections(response);
@@ -103,8 +119,8 @@
 
 		addMark(endPoint, 'gold');
 
-		mobileMap.style["min-height"] = "450px";
-		mobileMap.style["margin-top"] = "20px";
+		mobileMap.style["min-height"] = "400px";
+		mobileMap.style["margin-top"] = "15px";
 
 		if(travel_option === "colectivo" || travel_option === "tren") {
 			$.each(routes(), function() {

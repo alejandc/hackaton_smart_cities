@@ -1,5 +1,5 @@
 body {
-	background-color: #ffb600;
+	background-color: #ffdc1f;
 }
 html, body {
  height: 100%;
@@ -20,8 +20,23 @@ h1.signin-header {
 	font-size: 40pt;
 	margin-bottom: 20px;
 }
+ul.nav {
+	background: #464960;
+	margin-left: -20px;
+	margin-right: -20px;
+}
+
+div.puntos {
+	font-size: 25pt;
+}
 
 @font-face {
   font-family: 'RAYJOHNS';
   src: url('fonts/RAYJOHNS.ttf')  format('truetype');
+}
+
+div#qr {
+	width: 100%;
+	min-height: 300px;
+	background: black;
 }

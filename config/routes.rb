@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     get 'registro', to: 'mobile#registro'
     get 'denuncia', to: 'mobile#denuncia'
     post 'denuncia', to: 'mobile#denuncia'
+	 get 'carga_qr', to: 'mobile#carga_qr'
   end
 
   mount Sidekiq::Web => '/sidekiq'
