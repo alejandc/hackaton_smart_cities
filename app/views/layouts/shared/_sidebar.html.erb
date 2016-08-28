@@ -31,7 +31,7 @@
       <li id='suggestions_lnk'>
         <%= link_to "<i class='fa fa-commenting'></i>".html_safe + " Sugerencias", suggestions_path %>
       </li>
-      <li>
+      <li id='incidents_lnk'>
         <%= link_to incidents_path do %>
           <i class="fa fa-exclamation-circle"></i>
           Incidencias
@@ -50,6 +50,9 @@
 
       <% when "suggestions" %>
         $('li#suggestions_lnk').addClass('active');
+
+        <% when "incidents" %>
+          $('li#incidents_lnk').addClass('active');
 
       <% else %>
         <%= nil %>
