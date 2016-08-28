@@ -3,11 +3,13 @@
     <div class="panel-body">
       <%= form_tag("/m/ver_incidentes", method: "get") do %>
         <div class="form-group input-group-lg">
+          <label><strong>Origen:</strong></label>
           <%= hidden_field :carga, :lat_origin, {id: "lat-origin"} %>
           <%= hidden_field :carga, :lng_origin, {id: "lng-origin"} %>
           <%= text_field_tag "location_name", "", class: "form-control", id: "location-input-origin", name: "location[name]" %>
         </div>
         <div class="form-group input-group-lg">
+          <label><strong>Destino:</strong></label>
           <%= hidden_field :carga, :lat_destination, {id: "lat-destination"} %>
           <%= hidden_field :carga, :lng_destination, {id: "lng-destination"} %>
           <%= text_field_tag "location_name", "", class: "form-control", id: "location-input-destination", name: "location[name]" %>
@@ -19,7 +21,7 @@
             <button type="button" class="btn btn-primary" value="colectivo"><i class="fa fa-bus fa-2x" aria-hidden="true"></i></button>
             <button type="button" class="btn btn-primary" value="tren"><i class="fa fa-train fa-2x" aria-hidden="true"></i></button>
         </div>
-        <button type="submit" class="btn-primary btn-lg btn-success">Buscar</button>
+        <button type="submit" class="btn-primary btn-lg btn-success"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
       <% end %>
     </div>
 </div>
