@@ -15,6 +15,7 @@
 #  last_sign_in_ip        :inet
 #  name                   :string
 #  sube_reference         :string
+#  points                 :integer
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #

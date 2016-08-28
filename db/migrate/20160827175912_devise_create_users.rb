@@ -32,6 +32,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
 
       t.string :name
       t.string :sube_reference
+      t.integer :points
 
       t.timestamps null: false
     end

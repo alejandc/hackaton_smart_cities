@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20160828042953) do
     t.string   "suggestion_type"
     t.string   "reference"
     t.boolean  "is_valid"
-    t.datetime "start_start"
+    t.datetime "start_time"
     t.datetime "end_time"
     t.integer  "points"
     t.datetime "created_at",      null: false
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20160828042953) do
     t.inet     "last_sign_in_ip"
     t.string   "name"
     t.string   "sube_reference"
+    t.integer  "points"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree

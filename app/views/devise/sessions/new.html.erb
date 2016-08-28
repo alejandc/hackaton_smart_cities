@@ -5,28 +5,30 @@
     <div class="sign__container">
 
       <div class="panel panel-default">
+        <%= image_tag('header_login2.png', size: '358x60') %>
 
         <div class="panel-heading">
           <h4 class="panel-title">
-            Sign In to your account
+
+            Ingresa a tu cuenta
           </h4>
         </div> <!-- / .panel-heading -->
 
         <div class="panel-body">
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="form-group">
-              <label for="sign-in__email">Your e-mail</label>
+              <label for="sign-in__email">E-mail</label>
               <%= f.email_field :email, class: "form-control", id: "sign-in__email", autofocus: true %>
             </div>
 
             <div class="form-group">
-              <label for="sign-in__password">Your password</label>
+              <label for="sign-in__password">Contraseña</label>
               <%= f.password_field :password, class: "form-control", id: "sign-in__password", autocomplete: "off" %>
             </div>
 
             <div class="row">
               <div class="col-sm-6 col-sm-offset-6 text-right">
-                <%= f.submit "Sign in", class: "btn btn-primary" %>
+                <%= f.submit "Iniciar Sessión", class: "btn btn-primary" %>
               </div>
             </div>
           <% end %>
