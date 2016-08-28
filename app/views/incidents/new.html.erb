@@ -42,3 +42,9 @@
 </div>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.secrets.google_api_key %>&libraries=places"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    initAutocomplete();
+  })
+</script>

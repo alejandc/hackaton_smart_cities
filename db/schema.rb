@@ -37,6 +37,17 @@ ActiveRecord::Schema.define(version: 20160828013834) do
     t.index ["name"], name: "index_roles_on_name", using: :btree
   end
 
+  create_table "suggestions", force: :cascade do |t|
+    t.string   "suggestion_type"
+    t.string   "reference"
+    t.boolean  "is_valid"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "points"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false

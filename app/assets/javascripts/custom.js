@@ -57,7 +57,7 @@ $(function() {
 
 		Chart.defaults.global.responsive = true;
 		Chart.defaults.global.legend.display = false;
-		
+
 		var ctx = $(".chart_visitors").get(0).getContext("2d");
 		var chartVisitors = new Chart(ctx, {
 			type: "line",
@@ -89,7 +89,7 @@ $(function() {
 
 		Chart.defaults.global.responsive = true;
 		Chart.defaults.global.legend.display = false;
-		
+
 		var ctx = $(".chart_revenue").get(0).getContext("2d");
 		var chartRevenue = new Chart(ctx, {
 			type: "line",
@@ -121,7 +121,7 @@ $(function() {
 
 		Chart.defaults.global.responsive = true;
 		Chart.defaults.global.legend.display = false;
-		
+
 		var ctx = $(".chart_linechart").get(0).getContext("2d");
 		var chartLineChart = new Chart(ctx, {
 			type: "line",
@@ -168,7 +168,7 @@ $(function() {
 
 		Chart.defaults.global.responsive = true;
 		Chart.defaults.global.legend.display = false;
-		
+
 		var ctx = $(".chart_barchart").get(0).getContext("2d");
 		var chartBarChart = new Chart(ctx, {
 			type: "bar",
@@ -205,7 +205,7 @@ $(function() {
 			            pointRadius: 3,
 						data: [28, 48, 40, 19, 86, 27, 90]
 					}
-				]	
+				]
 			}
 		}, {
 			barStrokeWidth: 1
@@ -217,7 +217,7 @@ $(function() {
 
 		Chart.defaults.global.responsive = true;
 		Chart.defaults.global.legend.display = false;
-		
+
 		var ctx = $(".chart_radarchart").get(0).getContext("2d");
 		var chartBarChart = new Chart(ctx, {
 			type: "radar",
@@ -254,7 +254,7 @@ $(function() {
 			            pointRadius: 3,
 						data: [28, 48, 40, 19, 86, 27, 90]
 					}
-				]	
+				]
 			}
 		});
 	}
@@ -264,10 +264,10 @@ $(function() {
 
 		Chart.defaults.global.responsive = true;
 		Chart.defaults.global.legend.display = false;
-		
+
 		var ctx = $(".chart_polarareachart").get(0).getContext("2d");
 		var chartPolarAreaChart = new Chart(ctx, {
-			type: "polarArea", 
+			type: "polarArea",
 			data: {
 				datasets: [{
 					data: [290, 90, 140, 190],
@@ -285,7 +285,7 @@ $(function() {
 					],
 					label: ["Accent", "Orange", "Pink", "Teal"],
 					borderWidth: 0
-				}], 
+				}],
 				labels: ["Accent", "Orange", "Pink", "Teal"]
 			}
 		})
@@ -296,7 +296,7 @@ $(function() {
 
 		Chart.defaults.global.responsive = true;
 		Chart.defaults.global.legend.display = false;
-		
+
 		var ctx = $(".chart_piechart").get(0).getContext("2d");
 		var chartPieChart = new Chart(ctx, {
 			type: "pie",
@@ -325,7 +325,7 @@ $(function() {
 
 		Chart.defaults.global.responsive = true;
 		Chart.defaults.global.legend.display = false;
-		
+
 		var ctx = $(".chart_doughnutchart").get(0).getContext("2d");
 		var chartDoughnutChart = new Chart(ctx, {
 			type: "doughnut",
@@ -385,23 +385,8 @@ $(function() {
 					return false;
 				});
 			});
-			
-	}
-});
-
-
-// Datatables
-
-$(function() {
-
-	if ( $("#datatables__example").length ) {
-
-		$("#datatables__example").DataTable({
-			dom: "f"
-		});
 
 	}
-
 });
 
 
@@ -412,20 +397,6 @@ $(function() {
 	if ( $(".inbox__table").length ) {
 
 		$(".inbox__table").DataTable({
-		});
-
-	}
-
-});
-
-
-// Orders
-
-$(function() {
-
-	if ( $("#orders__table").length ) {
-
-		$("#orders__table").DataTable({
 		});
 
 	}
