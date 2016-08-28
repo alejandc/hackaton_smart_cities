@@ -1,6 +1,9 @@
+<span class="pull-right">Puntos: <span class="puntos">0</span></span>
+<br>
 <div id="mobileMap"></div>
 
 <script>
+	var travel_option = "<%= @travel_option %>";
 	var map;
 	var hero;
 	var gems = [];
@@ -103,33 +106,42 @@
 		mobileMap.style["min-height"] = "450px";
 		mobileMap.style["margin-top"] = "20px";
 
-		$.each(routes(), function() {
-    	addRoute(map, this.origin, this.destination, this.waypoints, this.travelMode, directionsService);
-		});
+		if(travel_option === "colectivo" || travel_option === "tren") {
+			$.each(routes(), function() {
+	    	addRoute(map, this.origin, this.destination, this.waypoints, this.travelMode, directionsService);
+			});
 
-		$.each(paths, function() {
-			addGem(this);
-		});
+			$.each(paths, function() {
+				addGem(this);
+			});
+		}
+
 	}
 
 	$(document).ready(function() {
 		var i = 0;
 
 		function recollect() {
-			hero.setMap(null);
+			if(gems.length > i) {
+				hero.setMap(null);
 
-			hero = new google.maps.Marker({
-				position: new google.maps.LatLng(parseFloat(paths[i].lat), parseFloat(paths[i].lng)),
-				icon: icons['hero'].icon,
-				map: map
-			});
+				hero = new google.maps.Marker({
+					position: new google.maps.LatLng(parseFloat(paths[i].lat), parseFloat(paths[i].lng)),
+					icon: icons['hero'].icon,
+					map: map
+				});
 
-			gems[i].setMap(null);
+				gems[i].setMap(null);
 
-			i++;
+				$(".puntos").html(parseFloat($(".puntos").text()) + 10);
+
+				i++;
+			}
 		};
 
-		setInterval(recollect, 1000);
+		if(travel_option === "colectivo" || travel_option === "tren") {
+			setInterval(recollect, 1000);
+		}
 	});
 </script>
 
