@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-xs-12">
+
+    <h3 class="page-header">
+      Notificaciones <small>de usuarios</small>
+    </h3>
+
+  </div>
+</div> <!-- / .row -->
+
+<div class="row">
+  <div class="col-xs-12">
+
+    <!-- Orders -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Listado</h3>
+      </div>
+
+      <div class="panel-body">
+        <% if @notifications.empty? %>
+          <div class="alert alert-info alert-dismissible" role="alert">
+              <strong>Sin notificaciones!</strong>
+              Por el momento no hay notificaciones cargadas.
+          </div>
+        <% else %>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Origen</th>
+                  <th>Descripción</th>
+                  <th>Ubicación</th>
+                  <th>Estado</th>
+                  <th style="text-align: center;">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @notifications.each do |notification| %>
+                  <tr>
+                    <td> <%= notification.notification_type %> </td>
+                    <td> <%= notification.description %> </td>
+                    <td> <%= "#{notification.latitude} #{notification.longitude}" %> </td>
+                    <td> <%= notification.notification_status %> </td>
+                    <td style="text-align: center;">
+                      <div class="btn-group" aria-label="First group" role="group">
+                        <%= link_to "<i class='fa fa-pencil'></i>".html_safe, notification_path(notification), class: 'btn btn-info', method: :put, data: { confirm: '¿Desea marcar como válida esta notificación?' }%>
+                        <%= link_to "<i class='fa fa-close'></i>".html_safe, notification_path(notification), class: 'btn btn-danger', method: :delete, data: { confirm: '¿Esta seguro de eliminar esta notificación?' }%>
+                      </div>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        <% end %>
+      </div>
+    </div> <!-- / .panel -->
+
+  </div>
+</div>

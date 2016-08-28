@@ -37,6 +37,9 @@
           Incidencias
         <% end %>
       </li>
+      <li id='notifications_lnk'>
+        <%= link_to "<i class='fa fa-envelope'></i>".html_safe + " Notificaciones", notifications_path %>
+      </li>
     </ul>
   </nav>
 
@@ -51,8 +54,11 @@
       <% when "suggestions" %>
         $('li#suggestions_lnk').addClass('active');
 
-        <% when "incidents" %>
-          $('li#incidents_lnk').addClass('active');
+      <% when "incidents" %>
+        $('li#incidents_lnk').addClass('active');
+
+      <% when "notifications" %>
+        $('li#notifications_lnk').addClass('active');
 
       <% else %>
         <%= nil %>

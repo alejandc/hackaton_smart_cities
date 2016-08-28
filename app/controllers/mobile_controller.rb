@@ -7,9 +7,11 @@ class MobileController < ActionController::Base
 
 	def denuncia
 		if request.post?
-			@descripcion = params["descripcion"]
-			@lat = params["lat"]
-			@lng = params["lng"]
+      Notification.create(description: params["descripcion"],
+                          latitude: params["lat"],
+                          longitude: params["lng"],
+                          notification_type: 'usuario',
+                          notification_status: 'verificar')
 		end
 	end
 
