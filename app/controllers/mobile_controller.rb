@@ -5,6 +5,10 @@ class MobileController < ActionController::Base
 	def index
 	end
 
+	def ver_incidentes
+		@incidentes = Incident.all
+	end
+
 	def signin
 		if request.post?
 			@user = User.find_by_email(params["email"])
