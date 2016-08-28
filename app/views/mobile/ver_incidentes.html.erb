@@ -1,3 +1,32 @@
 <div id="mobileMap"></div>
 
+<script>
+function initMobileMap () {
+	var startPoint = { lat: -34.612722, lng: -58.381592 };
+	var endPoint = { lat: -34.5950000, lng: -58.381592 };
+
+	var mobileMap = document.getElementById("mobileMap");
+	var map = new google.maps.Map(mobileMap, {
+		center: {lat: -34.603722, lng:  -58.381592},
+		zoom: 14
+	});
+
+	<% unless @incidentes.nil? || @incidentes.empty? %>
+	var incidentes = <%= raw(@incidentes.map { |i| raw(i.to_json.to_s) }) %>.map(i => JSON.parse(i));
+	<% else %>
+	var incidentes = [];
+	<% end %>
+
+	incidentes.forEach(function (i) {
+		new google.maps.Marker({
+	     position: new google.maps.LatLng(parseFloat(i.lat), parseFloat(i.lng)),
+	     icon: icons['anti_hero'].icon,
+	     map: map
+	   });
+	});
+	mobileMap.style["min-height"] = "450px";
+	mobileMap.style["margin-top"] = "20px";
+}
+</script>
+
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.secrets.google_api_key %>&callback=initMobileMap"></script>
