@@ -25,8 +25,30 @@ function addMarker(feature) {
 
 var map;
 
+function initMobileMap () {
+	var startPoint = { lat: -34.612722, lng: -58.381592 };
+	var endPoint = { lat: -34.5950000, lng: -58.381592 };
+
+	var mobileMap = document.getElementById("mobileMap");
+	map = new google.maps.Map(mobileMap, {
+		center: {lat: -34.603722, lng:  -58.381592},
+		zoom: 14
+	});
+
+	var points = [ { position: new google.maps.LatLng(startPoint.lat, startPoint.lng), type: 'hero' },
+				 { position: new google.maps.LatLng(-34.601022, -58.381592), type: 'anti_hero' },
+				 { position: new google.maps.LatLng(-34.605022, -58.381592), type: 'anti_hero' },
+				 { position: new google.maps.LatLng(endPoint.lat, endPoint.lng), type: 'gold' } ]
+
+	$(points).each(function() {
+		addMarker(this);
+	});
+	mobileMap.style["min-height"] = "450px";
+	mobileMap.style["margin-top"] = "20px";
+}
+
 function initMap() {
-  var startPoint = { lat: -34.612722, lng: -58.381592 };
+  	    var startPoint = { lat: -34.612722, lng: -58.381592 };
   var endPoint = { lat: -34.5950000, lng: -58.381592 };
 
   map = new google.maps.Map(document.getElementById('map'), {
@@ -34,7 +56,7 @@ function initMap() {
     zoom: 17
   });
 
-  var points = [ { position: new google.maps.LatLng(startPoint.lat, startPoint.lng), type: 'hero' }, 
+  var points = [ { position: new google.maps.LatLng(startPoint.lat, startPoint.lng), type: 'hero' },
                  { position: new google.maps.LatLng(-34.601022, -58.381592), type: 'anti_hero' },
                  { position: new google.maps.LatLng(-34.605022, -58.381592), type: 'anti_hero' },
                  { position: new google.maps.LatLng(endPoint.lat, endPoint.lng), type: 'gold' } ]
