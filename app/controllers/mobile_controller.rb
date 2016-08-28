@@ -5,6 +5,16 @@ class MobileController < ActionController::Base
 	def index
 	end
 
+	def denuncia
+		if request.post?
+      Notification.create(description: params["descripcion"],
+                          latitude: params["lat"],
+                          longitude: params["lng"],
+                          notification_type: 'usuario',
+                          notification_status: 'verificar')
+		end
+	end
+
 	def ver_incidentes
 		@origin_lat = params[:carga][:lat_origin]
 		@origin_lng = params[:carga][:lng_origin]
