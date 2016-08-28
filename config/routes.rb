@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 	  get 'signin', to: 'mobile#signin'
 	  post 'signin', to: 'mobile#signin'
     get 'carga_trayecto', to: 'mobile#carga_trayecto'
-	 post 'ver_incidentes', to: 'mobile#ver_incidentes'
+	 get 'ver_incidentes', to: 'mobile#ver_incidentes'
 	 get 'perfil', to: 'mobile#perfil'
   end
 
