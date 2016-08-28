@@ -9,9 +9,9 @@
 <div class="form-group">
   <label for="inputReference" class="col-sm-2 control-label">Linea</label>
   <div class="col-sm-4">
-    <%= f.select :suggestion_type, options_for_select(Suggestion::TYPES['Colectivo'], f.object.reference), {}, class: 'form-control', id: 'inputReferenceColectivo'%>
-    <%= f.select :suggestion_type, options_for_select(Suggestion::TYPES['Tren'], f.object.reference), {}, class: 'form-control hidden', id: 'inputReferenceTren', disabled: true%>
-    <%= f.select :suggestion_type, options_for_select(Suggestion::TYPES['Subte'], f.object.reference), {}, class: 'form-control hidden', id: 'inputReferenceSubte', disabled: true%>
+    <%= f.select :reference, options_for_select(Suggestion::TYPES['Colectivo'], f.object.reference), {}, class: 'form-control', id: 'inputReferenceColectivo'%>
+    <%= f.select :reference, options_for_select(Suggestion::TYPES['Tren'], f.object.reference), {}, class: 'form-control hidden', id: 'inputReferenceTren', disabled: true%>
+    <%= f.select :reference, options_for_select(Suggestion::TYPES['Subte'], f.object.reference), {}, class: 'form-control hidden', id: 'inputReferenceSubte', disabled: true%>
   </div>
 </div>
 
@@ -26,14 +26,14 @@
 <div class="form-group">
   <%= f.label "Inicio", class: "col-sm-2 control-label" %>
   <div class="col-sm-3">
-    <input type="text" name="suggestion[start_time]" class="form-control datetimepicker" />
+    <%= f.text_field :start_time, class: 'form-control datetimepicker'%>
   </div>
 </div>
 
 <div class="form-group">
   <%= f.label "Fin", class: "col-sm-2 control-label" %>
   <div class="col-sm-3">
-    <input type="text" name="suggestion[end_time]" class="form-control datetimepicker" />
+    <%= f.text_field :end_time, class: 'form-control datetimepicker'%>
   </div>
 </div>
 
@@ -46,12 +46,6 @@
 </div>
 
 <script type="text/javascript">
-  $(document).ready(function() {
-    $('.datetimepicker').datetimepicker({
-      format: 'YYYY-MM-DD HH:mm'
-    });
-  })
-
   function show_hide_suggestion_reference() {
     var optionSelected = $( "#inputSuggestionType" ).val();
 
