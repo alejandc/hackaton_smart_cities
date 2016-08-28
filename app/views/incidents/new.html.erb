@@ -1,0 +1,50 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+  <h4 class="panel-title">Nuevo Incidente</h4>
+  </div>
+  <div class="panel-body">
+    <%= form_for(@incident) do |f| %>
+
+      <div class="form-group">
+        <%= f.label "Tipo" %>
+        <%= f.select :incident_type, Incident::TIPOS.map {|tipo| [tipo.first, tipo.last]}, {}, {placeholder: "Tipo", class: "form-control"} %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Inicio" %>
+        <input type="text" name="incident[start_time]" class="form-control datetimepicker" />
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Fin" %>
+        <input type="text" name="incident[end_time]" class="form-control datetimepicker" />
+      </div>
+
+      <div class="form-group">
+        <%= f.hidden_field :lat %>
+        <%= f.hidden_field :lng %>
+        <%= f.label "Direccion" %>
+        <%= text_field_tag "location_name", "", class: "form-control", id: "location-input", name: "location[name]" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Descripcion" %>
+        <%= f.text_area :description, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.check_box :available, {}, true, false %> Activo
+      </div>
+
+      <%= f.submit "Crear", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.secrets.google_api_key %>&libraries=places"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    initAutocomplete();
+  })
+</script>

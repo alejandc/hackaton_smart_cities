@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-xs-12">
+
+    <h3 class="page-header">
+      Sugerencias <small>de transporte público</small>
+    </h3>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+
+    <!-- Horizontal form -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">Editar Sugerencia</h4>
+      </div>
+
+      <div class="panel-body">
+        <%= form_for @suggestion, :html => { :role => 'form', :method => :put, :class => 'form-horizontal'} do |f|%>
+
+          <%= render :partial => 'form', :locals => {:f => f} %>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-primary">Editar</button>
+              <%= link_to 'Cancelar', :back , class: 'btn'%>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>

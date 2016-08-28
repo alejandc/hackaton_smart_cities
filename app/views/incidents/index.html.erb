@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-xs-12">
+
+    <h3 class="page-header">
+      Incidentes
+    </h3>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+
+    <!-- Incidents -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="pull-left panel-title">Incidentes</h3>
+        <%= link_to "Nuevo", new_incident_path, class: "pull-right btn btn-primary" %>
+      </div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <div id="orders__table_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+            <div class="row">
+              <div class="col-sm-12">
+                <table class="table dataTable no-footer" id="orders__table" role="grid" aria-describedby="orders__table_info">
+                  <thead>
+                    <tr role="row">
+                      <th class="text-center" style="width: 235px;"><strong>Tipo</strong></th>
+                      <th class="text-center" style="width: 319px;"><strong>Inicio</strong></th>
+                      <th class="text-center" style="width: 363px;"><strong>Fin</strong></th>
+                      <th class="text-center" style="width: 254px;"><strong>Lat</strong></th>
+                      <th class="text-center" style="width: 232px;"><strong>Lng</strong></th>
+                      <th class="text-center" style="width: 232px;"><strong>Descripcion</strong></th>
+                      <th class="text-center" style="width: 232px;"><strong>Disponible</strong></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @incidents.each_with_index do |incident, index| %>
+                      <tr role="row" class="<%= index.odd? ? 'odd' : 'even' %>">
+                        <td class="text-center"><%= incident.incident_type %></td>
+                        <td class="text-center"><%= incident.start_time.strftime('%d/%m/%y - %H:%M') %></td>
+                        <td class="text-center"><%= incident.end_time.strftime('%d/%m/%y - %H:%M') %></td>
+                        <td class="text-center"><%= incident.lat.round(6) %></td>
+                        <td class="text-center"><%= incident.lng.round(6) %></td>
+                        <td class="text-center"><%= incident.description %></td>
+                        <td class="text-center"><%= incident.available ? 'Si' : 'No' %></td>
+                      </tr>
+                    <% end %>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-5">
+                <div class="dataTables_info" id="orders__table_info" role="status" aria-live="polite">Mostrando 1 to <%= @incidents.count %> of <%= Incident.count %> entries
+                </div>
+              </div>
+              <%= paginate @incidents %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- / .panel -->
+
+  </div>
+</div>

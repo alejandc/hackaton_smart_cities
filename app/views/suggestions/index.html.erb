@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-xs-12">
+
+    <h3 class="page-header">
+      Sugerencias <small>de transporte público</small>
+    </h3>
+
+  </div>
+</div> <!-- / .row -->
+
+<div class="row">
+  <div class="col-xs-12">
+
+    <!-- Orders -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Listado</h3>
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="pull-right">
+              <%= link_to 'Crear Sugerencia', new_suggestion_path, class: 'btn btn-primary mb_sm' %>
+            </div>
+          </div>
+        </div>
+        <% if @suggestions.empty? %>
+          <div class="alert alert-info alert-dismissible" role="alert">
+              <strong>Sin sugerencias!</strong>
+              Por el momento no hay sugerencias cargadas.
+          </div>
+        <% else %>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Sugerencia</th>
+                  <th>Referencia</th>
+                  <th>Fecha Inicio</th>
+                  <th>Fecha Fin</th>
+                  <th>Recomendación</th>
+                  <th>Puntos</th>
+                  <th style="text-align: center;">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @suggestions.each do |suggestion| %>
+                  <tr>
+                    <td> <%= suggestion.suggestion_type %> </td>
+                    <td> <%= suggestion.reference %> </td>
+                    <td> <%= suggestion.start_time.strftime("%d/%m/%Y %H:%M") %> </td>
+                    <td> <%= suggestion.end_time.strftime("%d/%m/%Y %H:%M") %> </td>
+                    <td> <%= suggestion.is_valid ? "POSITIVA" : "NEGATIVA" %> </td>
+                    <td> <%= suggestion.points %> </td>
+                    <td style="text-align: center;">
+                      <div class="btn-group" aria-label="First group" role="group">
+                        <%= link_to "<i class='fa fa-pencil'></i>".html_safe, edit_suggestion_path(suggestion), class: 'btn btn-info'%>
+                        <%= link_to "<i class='fa fa-close'></i>".html_safe, suggestion_path(suggestion), class: 'btn btn-danger', method: :delete, data: { confirm: '¿Esta seguro de eliminar esta sugerencia?' }%>
+                      </div>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        <% end %>
+      </div>
+    </div> <!-- / .panel -->
+
+  </div>
+</div>

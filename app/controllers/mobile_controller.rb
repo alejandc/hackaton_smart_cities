@@ -5,6 +5,15 @@ class MobileController < ActionController::Base
 	def index
 	end
 
+	def ver_incidentes
+		@origin_lat = params[:carga][:lat_origin]
+		@origin_lng = params[:carga][:lng_origin]
+		@destination_lat = params[:carga][:lat_destination]
+		@destination_lng = params[:carga][:lng_destination]
+		@travel_option = params[:carga][:travel_option]
+		@incidentes = Incident.all
+	end
+
 	def signin
 		if request.post?
 			@user = User.find_by_email(params["email"])

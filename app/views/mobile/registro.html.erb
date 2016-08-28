@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 <div class="row">
   <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
 
@@ -20,35 +13,30 @@
         </div> <!-- / .panel-heading -->
 
         <div class="panel-body">
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <%= devise_error_messages! %>
 
             <div class="form-group">
               <label for="sign-up__name">Tu nombre</label>
-              <%= f.text_field :name, autofocus: true, required: true, class: "form-control", id: "sign-up__name" %>
+              <input  type="text" class="form-control"></input>
             </div>
 
             <div class="form-group">
               <label for="sign-up__email">Tu email</label>
-              <%= f.email_field :email, required: true, class: "form-control", id: "sign-up__email" %>
+              <input  type="text" class="form-control"></input>
             </div>
 
             <div class="form-group">
-              <label for="sign-up__name">Número de SUBE </label>
-              <%= f.text_field :sube_reference, autofocus: true, required: true, class: "form-control", id: "sign-up__name" %>
+              <label for="sign-up__name">Tu número SUBE</label>
+              <input  type="text" class="form-control"></input>
             </div>
 
             <div class="form-group">
               <label for="sign-up__password">Contraseña</label>
-              <% if @minimum_password_length %>
-              <em>(<%= @minimum_password_length %> characters minimum)</em>
-              <% end %><br />
-              <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "sign-up__password" %>
+              <input  type="text" class="form-control"></input>
             </div>
 
             <div class="form-group">
-              <label for="sign-up__password_confirmation">Repetir contrase{a}</label>
-              <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "sign-up__password_confirmation" %>
+              <label for="sign-up__password_confirmation">Repetir contraseña</label>
+              <input  type="text" class="form-control"></input>
             </div>
 
             <div class="row">
@@ -61,16 +49,14 @@
                 </div>
               </div>
               <div class="col-sm-4 text-right">
-                <%= f.submit "Sign up", class: "btn btn-primary" %>
+                <button type="submit"></button>
               </div>
             </div>
-          <% end %>
         </div> <!-- / .panel-body -->
 
       </div> <!-- / .panel -->
 
       <p class="sign__extra text-muted text-center">
-        <%= render "devise/shared/links" %>
       </p>
 
     </div> <!-- / .sign__conteiner -->
