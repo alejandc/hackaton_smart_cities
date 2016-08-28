@@ -1,0 +1,30 @@
+<h2>DENUNCIAR INCIDENTE</h2>
+
+<%= form_tag("/m/denuncia", method: "post", id: "formDenuncia") do %>
+	<div class="control-group">
+		<textarea class="form-control" name="descripcion" placeholder="Descripción" rows="10"></textarea>
+		<input type="hidden" name="lat" id="lat"/>
+		<input type="hidden" name="lng" id="lng"/>
+	</div>
+	<div class="control-group">
+		<br/>
+		<button type="button" class="btn btn-info btn-xl" onClick="enviar()">
+			<i class="fa fa-paper-plane"></i> ENVIAR
+		</button>
+	</div>
+<% end %>
+
+<script>
+	function enviar () {
+		if ("geolocation" in navigator) {
+			navigator.geolocation.getCurrentPosition(function(position) {
+				console.log(position.coords.latitude);
+				document.getElementById("lat").value = position.coords.latitude;
+				document.getElementById("lng").value = position.coords.longitude;
+				document.getElementById("formDenuncia").submit();
+			});
+		} else {
+			console.log("no geolocation");
+		}
+	}
+</script>

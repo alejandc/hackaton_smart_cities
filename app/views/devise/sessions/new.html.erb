@@ -24,20 +24,8 @@
               <%= f.password_field :password, class: "form-control", id: "sign-in__password", autocomplete: "off" %>
             </div>
 
-
             <div class="row">
-              <% if devise_mapping.rememberable? -%>
-                <div class="col-sm-6">
-                  <div class="checkbox">
-                    <%= f.check_box :remember_me,  id: "remember-me" %>
-                    <label for="remember-me">
-                      Remember me
-                    </label>
-                  </div>
-                </div>
-              <% end -%>
-
-              <div class="col-sm-6 text-right">
+              <div class="col-sm-6 col-sm-offset-6 text-right">
                 <%= f.submit "Sign in", class: "btn btn-primary" %>
               </div>
             </div>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registration"}
 
   resources :suggestions
+  resources :notifications
 
   get 'example', to: :index, controller: 'example'
 
@@ -18,10 +19,11 @@ Rails.application.routes.draw do
 	  get 'ver_incidentes', to: 'mobile#ver_incidentes'
 	  get 'perfil', to: 'mobile#perfil'
     get 'registro', to: 'mobile#registro'
-	 get 'ver_incidentes', to: 'mobile#ver_incidentes'
-	 get 'perfil', to: 'mobile#perfil'
-   get 'registro', to: 'mobile#registro'
-	get 'captura_qr', to: 'mobile#captura_qr'
+    get 'ver_incidentes', to: 'mobile#ver_incidentes'
+    get 'perfil', to: 'mobile#perfil'
+    get 'registro', to: 'mobile#registro'
+    get 'denuncia', to: 'mobile#denuncia'
+    post 'denuncia', to: 'mobile#denuncia'
   end
 
   mount Sidekiq::Web => '/sidekiq'
