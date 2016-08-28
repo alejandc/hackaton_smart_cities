@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20160828042953) do
     t.string   "suggestion_type"
     t.string   "reference"
     t.boolean  "is_valid"
-    t.datetime "start_time"
+    t.datetime "start_start"
     t.datetime "end_time"
     t.integer  "points"
     t.datetime "created_at",      null: false

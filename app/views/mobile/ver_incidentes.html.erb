@@ -4,24 +4,6 @@
 	var map;
 	var hero;
 	var gems = [];
-	// var path = [
-	// 	{ location: new google.maps.LatLng(-34.603658, -58.370292) },
-	// 	{ location: new google.maps.LatLng(-34.604029, -58.370292) },
-	// 	{ location: new google.maps.LatLng(-34.604903, -58.370289) },
-	// 	{ location: new google.maps.LatLng(-34.605885, -58.370283) },
-	// 	{ location: new google.maps.LatLng(-34.607386, -58.370777) },
-	// 	{ location: new google.maps.LatLng(-34.607978, -58.373309) },
-	// 	{ location: new google.maps.LatLng(-34.608515, -58.373970) },
-	// 	{ location: new google.maps.LatLng(-34.608771, -58.378058) },
-	// 	{ location: new google.maps.LatLng(-34.609045, -58.381995) },
-	// 	{ location: new google.maps.LatLng(-34.609310, -58.385503) },
-	// 	{ location: new google.maps.LatLng(-34.609125, -58.388282) },
-	// 	{ location: new google.maps.LatLng(-34.609134, -58.390084) },
-	// 	{ location: new google.maps.LatLng(-34.609222, -58.391983) },
-	// 	{ location: new google.maps.LatLng(-34.609363, -58.394815) },
-	// 	{ location: new google.maps.LatLng(-34.606520, -58.395148) },
-	// 	{ location: new google.maps.LatLng(-34.604560, -58.395287) }
-	// ];
 
 	var paths = [
 		{ lat: -34.603658, lng: -58.370292 },
@@ -124,6 +106,10 @@
 		$.each(routes(), function() {
     	addRoute(map, this.origin, this.destination, this.waypoints, this.travelMode, directionsService);
 		});
+
+		$.each(paths, function() {
+			addGem(this);
+		});
 	}
 
 	$(document).ready(function() {
@@ -138,10 +124,12 @@
 				map: map
 			});
 
+			gems[i].setMap(null);
+
 			i++;
 		};
 
-		setInterval(recollect, 2000);
+		setInterval(recollect, 1000);
 	});
 </script>
 
