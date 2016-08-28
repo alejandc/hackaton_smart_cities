@@ -2,8 +2,16 @@
 
 <script>
 function initMobileMap () {
-	var startPoint = { lat: -34.612722, lng: -58.381592 };
-	var endPoint = { lat: -34.5950000, lng: -58.381592 };
+	function addMark(position, type) {
+		new google.maps.Marker({
+			position: new google.maps.LatLng(parseFloat(position.lat), parseFloat(position.lng)),
+			icon: icons[type].icon,
+			map: map
+		});
+	}
+
+	var startPoint = { lat: <%= @origin_lat %>, lng: <%= @origin_lng %> };
+	var endPoint = { lat: <%= @destination_lat %>, lng: <%= @destination_lng %> };
 
 	var mobileMap = document.getElementById("mobileMap");
 	var map = new google.maps.Map(mobileMap, {
@@ -18,12 +26,12 @@ function initMobileMap () {
 	<% end %>
 
 	incidentes.forEach(function (i) {
-		new google.maps.Marker({
-	     position: new google.maps.LatLng(parseFloat(i.lat), parseFloat(i.lng)),
-	     icon: icons['anti_hero'].icon,
-	     map: map
-	   });
+		addMark(i, 'anti_hero');
 	});
+
+	addMark(startPoint, 'hero');
+	addMark(endPoint, 'gold')
+
 	mobileMap.style["min-height"] = "450px";
 	mobileMap.style["margin-top"] = "20px";
 }

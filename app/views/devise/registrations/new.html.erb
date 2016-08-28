@@ -15,7 +15,7 @@
 
         <div class="panel-heading">
           <h4 class="panel-title">
-            Create a new account
+            Crear nueva cuenta
           </h4>
         </div> <!-- / .panel-heading -->
 
@@ -24,22 +24,22 @@
             <%= devise_error_messages! %>
 
             <div class="form-group">
-              <label for="sign-up__name">Your name</label>
+              <label for="sign-up__name">Tu nombre</label>
               <%= f.text_field :name, autofocus: true, required: true, class: "form-control", id: "sign-up__name" %>
             </div>
 
             <div class="form-group">
-              <label for="sign-up__email">Your email</label>
+              <label for="sign-up__email">Tu email</label>
               <%= f.email_field :email, required: true, class: "form-control", id: "sign-up__email" %>
             </div>
 
             <div class="form-group">
-              <label for="sign-up__name">Your SUBE number</label>
+              <label for="sign-up__name">Número de SUBE </label>
               <%= f.text_field :sube_reference, autofocus: true, required: true, class: "form-control", id: "sign-up__name" %>
             </div>
 
             <div class="form-group">
-              <label for="sign-up__password">Your password</label>
+              <label for="sign-up__password">Contraseña</label>
               <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> characters minimum)</em>
               <% end %><br />
@@ -47,7 +47,7 @@
             </div>
 
             <div class="form-group">
-              <label for="sign-up__password_confirmation">Your password</label>
+              <label for="sign-up__password_confirmation">Repetir contrase{a}</label>
               <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "sign-up__password_confirmation" %>
             </div>
 
@@ -56,7 +56,7 @@
                 <div class="checkbox">
                   <input type="checkbox" id="remember-me">
                   <label for="remember-me">
-                    I accept <a href="#">Terms and Conditions</a>
+                    Acepto <a href="#">Términos y Condiciones</a>
                   </label>
                 </div>
               </div>
