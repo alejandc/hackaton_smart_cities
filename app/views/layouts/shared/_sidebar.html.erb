@@ -40,6 +40,9 @@
       <li id='notifications_lnk'>
         <%= link_to "<i class='fa fa-envelope'></i>".html_safe + " Notificaciones", notifications_path %>
       </li>
+      <li id='users_lnk'>
+        <%= link_to "<i class='fa fa-users'></i>".html_safe + " Usuarios", users_path %>
+      </li>
     </ul>
   </nav>
 
@@ -59,6 +62,9 @@
 
       <% when "notifications" %>
         $('li#notifications_lnk').addClass('active');
+
+      <% when "users" %>
+        $('li#users_lnk').addClass('active');
 
       <% else %>
         <%= nil %>

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :suggestions
   resources :notifications
+  resources :users
 
   get 'example', to: :index, controller: 'example'
 

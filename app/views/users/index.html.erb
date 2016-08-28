@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-xs-12">
+
+    <h3 class="page-header">
+      Usuarios <small>registrados</small>
+    </h3>
+
+  </div>
+</div> <!-- / .row -->
+
+<div class="row">
+  <div class="col-xs-12">
+
+    <!-- Orders -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Listado</h3>
+      </div>
+
+      <div class="panel-body">
+        <% if @users.empty? %>
+          <div class="alert alert-info alert-dismissible" role="alert">
+              <strong>Sin usuarios!</strong>
+              Por el momento no hay usuarios registrados.
+          </div>
+        <% else %>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Nombre Completo</th>
+                  <th>Email</th>
+                  <th>SUBE</th>
+                  <th>PUNTOS ACUMULADOS</th>
+                  <th>Ultimo login</th>
+                  <th style="text-align: center;">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @users.each do |user| %>
+                  <tr>
+                    <td> <%= user.name %> </td>
+                    <td> <%= user.email %> </td>
+                    <td> <%= user.sube_reference %> </td>
+                    <td> <%= user.points %> </td>
+                    <td> <%= user.last_sign_in_at %> </td>
+                    <td style="text-align: center;">
+                      <div class="btn-group" aria-label="First group" role="group">
+                        <%= link_to "<i class='fa fa-close'></i>".html_safe, user_path(user), class: 'btn btn-danger', method: :delete, data: { confirm: '¿Esta seguro de eliminar al usuario?' }%>
+                      </div>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        <% end %>
+      </div>
+    </div> <!-- / .panel -->
+
+  </div>
+</div>
