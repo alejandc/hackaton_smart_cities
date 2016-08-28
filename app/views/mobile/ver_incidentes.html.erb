@@ -1,40 +1,148 @@
 <div id="mobileMap"></div>
 
 <script>
-function initMobileMap () {
-	function addMark(position, type) {
-		new google.maps.Marker({
-			position: new google.maps.LatLng(parseFloat(position.lat), parseFloat(position.lng)),
-			icon: icons[type].icon,
+	var map;
+	var hero;
+	var gems = [];
+	// var path = [
+	// 	{ location: new google.maps.LatLng(-34.603658, -58.370292) },
+	// 	{ location: new google.maps.LatLng(-34.604029, -58.370292) },
+	// 	{ location: new google.maps.LatLng(-34.604903, -58.370289) },
+	// 	{ location: new google.maps.LatLng(-34.605885, -58.370283) },
+	// 	{ location: new google.maps.LatLng(-34.607386, -58.370777) },
+	// 	{ location: new google.maps.LatLng(-34.607978, -58.373309) },
+	// 	{ location: new google.maps.LatLng(-34.608515, -58.373970) },
+	// 	{ location: new google.maps.LatLng(-34.608771, -58.378058) },
+	// 	{ location: new google.maps.LatLng(-34.609045, -58.381995) },
+	// 	{ location: new google.maps.LatLng(-34.609310, -58.385503) },
+	// 	{ location: new google.maps.LatLng(-34.609125, -58.388282) },
+	// 	{ location: new google.maps.LatLng(-34.609134, -58.390084) },
+	// 	{ location: new google.maps.LatLng(-34.609222, -58.391983) },
+	// 	{ location: new google.maps.LatLng(-34.609363, -58.394815) },
+	// 	{ location: new google.maps.LatLng(-34.606520, -58.395148) },
+	// 	{ location: new google.maps.LatLng(-34.604560, -58.395287) }
+	// ];
+
+	var paths = [
+		{ lat: -34.603658, lng: -58.370292 },
+		{ lat: -34.604029, lng: -58.370292 },
+		{ lat: -34.604903, lng: -58.370289 },
+		{ lat: -34.605885, lng: -58.370283 },
+		{ lat: -34.607386, lng: -58.370777 },
+		{ lat: -34.607978, lng: -58.373309 },
+		{ lat: -34.608515, lng: -58.373970 },
+		{ lat: -34.608771, lng: -58.378058 },
+		{ lat: -34.609045, lng: -58.381995 },
+		{ lat: -34.609310, lng: -58.385503 },
+		{ lat: -34.609125, lng: -58.388282 },
+		{ lat: -34.609134, lng: -58.390084 },
+		{ lat: -34.609222, lng: -58.391983 },
+		{ lat: -34.609363, lng: -58.394815 },
+		{ lat: -34.606520, lng: -58.395148 },
+		{ lat: -34.604560, lng: -58.395287 }
+	];
+
+	function routes() {
+		return 	[
+							{ origin: new google.maps.LatLng(-34.6031891, -58.37065259999997), destination: new google.maps.LatLng(-34.60452719999999, -58.39527880000003), waypoints: [], travelMode: google.maps.DirectionsTravelMode.WALKING },
+							{ origin: new google.maps.LatLng(-34.6031891, -58.37065259999997), destination: new google.maps.LatLng(-34.60452719999999, -58.39527880000003), waypoints: [], travelMode: google.maps.DirectionsTravelMode.DRIVING },
+							{ origin: new google.maps.LatLng(-34.6031891, -58.37065259999997), destination: new google.maps.LatLng(-34.60452719999999, -58.39527880000003), waypoints: [ {location:new google.maps.LatLng(-34.6074031, -58.38113169999997), stopover: false} ], travelMode: google.maps.DirectionsTravelMode.DRIVING } 
+					 	]
+	}
+
+	function addRoute(mapAux, origin, destination, waypts, travelMode, service) {
+		var directionsDisplay = new google.maps.DirectionsRenderer({
+      suppressgems: false,
+      suppressInfoWindows: true
+    });
+
+    directionsDisplay.setMap(mapAux);
+
+    var request = {
+      origin: origin, 
+      destination: destination,
+      travelMode: travelMode,
+      waypoints: waypts
+    };
+    
+    service.route(request, function(response, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+      }
+    });
+	}
+
+	function initMobileMap() {
+		function addMark(position, type) {
+			new google.maps.Marker({
+				position: new google.maps.LatLng(parseFloat(position.lat), parseFloat(position.lng)),
+				icon: icons[type].icon,
+				map: map
+			});
+		}
+
+		function addGem(position) {
+			gems.push(new google.maps.Marker({
+										position: new google.maps.LatLng(parseFloat(position.lat), parseFloat(position.lng)),
+										icon: icons['gem'].icon,
+										map: map
+									}));
+		}
+
+		var startPoint = { lat: <%= @origin_lat %>, lng: <%= @origin_lng %> };
+		var endPoint = { lat: <%= @destination_lat %>, lng: <%= @destination_lng %> };
+
+		var mobileMap = document.getElementById("mobileMap");
+		map = new google.maps.Map(mobileMap, {
+			center: {lat: -34.603722, lng:  -58.381592},
+			zoom: 14
+		});
+
+		directionsService = new google.maps.DirectionsService();
+
+		<% unless @incidentes.nil? || @incidentes.empty? %>
+		var incidentes = <%= raw(@incidentes.map { |i| raw(i.to_json.to_s) }) %>.map(i => JSON.parse(i));
+		<% else %>
+		var incidentes = [];
+		<% end %>
+
+		incidentes.forEach(function (i) {
+			addMark(i, 'anti_hero');
+		});
+
+		hero = new google.maps.Marker({
+			position: new google.maps.LatLng(parseFloat(startPoint.lat), parseFloat(startPoint.lng)),
+			icon: icons['hero'].icon,
 			map: map
+		});
+
+		addMark(endPoint, 'gold');
+
+		mobileMap.style["min-height"] = "450px";
+		mobileMap.style["margin-top"] = "20px";
+
+		$.each(routes(), function() {
+    	addRoute(map, this.origin, this.destination, this.waypoints, this.travelMode, directionsService);
 		});
 	}
 
-	var startPoint = { lat: <%= @origin_lat %>, lng: <%= @origin_lng %> };
-	var endPoint = { lat: <%= @destination_lat %>, lng: <%= @destination_lng %> };
+	$(document).ready(function() {
+		var i = 0;
 
-	var mobileMap = document.getElementById("mobileMap");
-	var map = new google.maps.Map(mobileMap, {
-		center: {lat: -34.603722, lng:  -58.381592},
-		zoom: 14
+		function recollect() {
+			hero.setMap(null);
+
+			hero = new google.maps.Marker({
+				position: new google.maps.LatLng(parseFloat(paths[i].lat), parseFloat(paths[i].lng)),
+				icon: icons['hero'].icon,
+				map: map
+			});
+
+			i++;
+		};
+
+		setInterval(recollect, 2000);
 	});
-
-	<% unless @incidentes.nil? || @incidentes.empty? %>
-	var incidentes = <%= raw(@incidentes.map { |i| raw(i.to_json.to_s) }) %>.map(i => JSON.parse(i));
-	<% else %>
-	var incidentes = [];
-	<% end %>
-
-	incidentes.forEach(function (i) {
-		addMark(i, 'anti_hero');
-	});
-
-	addMark(startPoint, 'hero');
-	addMark(endPoint, 'gold')
-
-	mobileMap.style["min-height"] = "450px";
-	mobileMap.style["margin-top"] = "20px";
-}
 </script>
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.secrets.google_api_key %>&callback=initMobileMap"></script>
