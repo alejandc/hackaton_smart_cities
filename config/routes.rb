@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get 'carga_trayecto', to: 'mobile#carga_trayecto'
 	 get 'ver_incidentes', to: 'mobile#ver_incidentes'
 	 get 'perfil', to: 'mobile#perfil'
+   get 'registro', to: 'mobile#registro'
   end
 
   mount Sidekiq::Web => '/sidekiq'
