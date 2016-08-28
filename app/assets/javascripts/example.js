@@ -12,6 +12,9 @@ var icons = {
   },
   gold: {
     icon: iconBase + 'caldero_64x64.png'
+  },
+  gem: {
+    icon: iconBase + 'esmeralda_32x32.png'
   }
 };
 

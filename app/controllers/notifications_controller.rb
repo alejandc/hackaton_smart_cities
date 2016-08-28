@@ -5,8 +5,8 @@ class NotificationsController < ApplicationController
   end
 
   def update
-    @notifications = Notification.find(params[:id])
-    @notifications.update_attribute(:notification_status, 'verificada')
+    @notification = Notification.find(params[:id])
+    @notification.update_attribute(:notification_status, 'verificada')
 
     redirect_to notifications_path
   end
