@@ -5,6 +5,14 @@ class MobileController < ActionController::Base
 	def index
 	end
 
+	def denuncia
+		if request.post?
+			@descripcion = params["descripcion"]
+			@lat = params["lat"]
+			@lng = params["lng"]
+		end
+	end
+
 	def ver_incidentes
 		@incidentes = Incident.all
 	end
