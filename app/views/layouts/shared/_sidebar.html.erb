@@ -1,16 +1,17 @@
 <div class="sidebar">
 
   <!-- Close button (mobile devices) -->
-  <div class="sidebar__close">
+  <!-- <div class="sidebar__close">
     <img src="assets/img/close.svg" alt="Close sidebar">
-  </div>
+  </div> -->
 
   <!-- Sidebar user -->
   <div class="sidebar__user">
 
     <!-- Sidebar user avatar -->
     <div class="sidebar-user__avatar">
-      <img src="assets/img/user_1.jpg" alt="...">
+      <!-- <img src="assets/img/user_1.jpg" alt="..."> -->
+      <img src="assets/user_1.png">
     </div>
 
     <!-- Sidebar user info -->
@@ -45,6 +46,12 @@
       <li class="sidebar-nav__heading">Dashboard</li>
       <li>
         <a href="index.html"><i class="fa fa-th-large"></i> Dashboard</a>
+      </li>
+      <li>
+        <%= link_to incidents_path do %>
+          <i class="fa fa-th-large"></i>
+          Incidentes
+        <% end %>
       </li>
       <li class="sidebar-nav__heading">Pages</li>
       <li class="sidebar-nav__dropdown">

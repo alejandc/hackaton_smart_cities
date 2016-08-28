@@ -7,5 +7,7 @@ Rails.application.routes.draw do
 
   root 'dashboard#index'
 
+  resources :incidents
+
   mount Sidekiq::Web => '/sidekiq'
 end
