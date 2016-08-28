@@ -10,6 +10,6 @@ development:
   encoding: unicode
   database: hackaton-smart-cities-dev
   pool: 5
-  username: carne
-  password:
+  username: deploy
+  password: deploy
   port: 5432
